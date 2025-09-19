@@ -228,6 +228,10 @@ router.post('/adminlogin', async (req, res) => {
         else if (logdata.type == "admin") {
             res.json({ "data": "admin", aid: logdata.username })
         }
+        else {
+            // Handle legacy records without a type by assuming admin
+            res.json({ "data": "admin", aid: logdata.username })
+        }
     }
     else {
         res.json({ "data": "not found" })
